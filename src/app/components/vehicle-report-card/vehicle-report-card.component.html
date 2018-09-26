@@ -1,0 +1,46 @@
+<ion-card (click)="editVehicleReport()">
+  <ion-item style="padding-top: 0 !important" detail button lines="none" no-padding>
+    <ion-card-header style="padding-bottom: 8px">
+      <div text-wrap>
+        <ion-icon name="calendar"></ion-icon>
+        <span *ngIf="reportData.date_occurred && !selectedSortType">{{formatDate(reportData.date_occurred)}}</span>
+        <span *ngIf="reportData.date_occurred && selectedSortType && selectedSortType !== 'date_occurred'">{{formatDate(reportData.date_occurred)}}</span>
+        <b *ngIf="reportData.date_occurred && selectedSortType === 'date_occurred'" style="color: #25617f">{{formatDate(reportData.date_occurred)}}</b>
+        <b *ngIf="!reportData.date_occurred && selectedSortType === 'date_occurred'" style="color: #25617f">(No Date)</b>
+        <span *ngIf="!reportData.date_occurred">(No Date)</span>
+      </div>
+      <div text-wrap>
+        <ion-icon name="person"></ion-icon>
+        <span *ngIf="reportData.provider && !selectedSortType">{{reportData.provider}}</span>
+        <span *ngIf="reportData.provider && selectedSortType && selectedSortType !== 'provider'">{{reportData.provider}}</span>
+        <b *ngIf="reportData.provider  && selectedSortType === 'provider'" style="color: #25617f">{{reportData.provider}}</b>
+        <b *ngIf="!reportData.provider && selectedSortType === 'provider'" style="color: #25617f">(No Provider)</b>
+        <span *ngIf="!reportData.provider && selectedSortType !== 'provider'">(No Provider)</span>
+      </div>
+      <div text-wrap>
+        <ion-icon name="cash"></ion-icon>
+        <span *ngIf="reportData.cost && !selectedSortType">{{reportData.cost | currency}}</span>
+        <span *ngIf="reportData.cost && selectedSortType && selectedSortType !== 'cost'">{{reportData.cost | currency}}</span>
+        <b *ngIf="reportData.cost && selectedSortType === 'cost'" style="color: #25617f">{{reportData.cost | currency}}</b>
+        <b *ngIf="!reportData.cost && selectedSortType === 'cost'" style="color: #25617f">(No Cost)</b>
+        <span *ngIf="!reportData.cost && selectedSortType !== 'cost'">(No Cost)</span>
+      </div>
+      <div text-wrap>
+        <ion-icon name="ios-grid"></ion-icon>
+        <span *ngIf="reportData.mileage && !selectedSortType">{{reportData.mileage | number}} miles</span>
+        <span *ngIf="reportData.mileage && selectedSortType && selectedSortType !== 'mileage'">{{reportData.mileage | number}} miles</span>
+        <b *ngIf="reportData.mileage && selectedSortType === 'mileage'" style="color: #25617f">{{reportData.mileage | number}} miles</b>
+        <b *ngIf="!reportData.mileage && selectedSortType === 'mileage'" style="color: #25617f">(No Mileage)</b>
+        <span *ngIf="!reportData.mileage && selectedSortType !== 'mileage'">(No Mileage)</span>
+      </div>
+    </ion-card-header>
+    <div *ngIf="reportData.files.length > 0 && selectedSortType !== 'files'" id="image-label" style="color: gray" text-wrap>
+      <ion-icon name="image"></ion-icon>
+      <span>{{reportData.files.length}}</span>
+    </div>
+    <div *ngIf="reportData.files.length > 0 && selectedSortType === 'files'" id="image-label" style="color: #25617f" text-wrap>
+      <ion-icon name="image"></ion-icon>
+      <b>{{reportData.files.length}}</b>
+    </div>
+  </ion-item>
+</ion-card>

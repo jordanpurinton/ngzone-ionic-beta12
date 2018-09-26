@@ -1,0 +1,47 @@
+[{
+        "cost": "123.00",
+        "created_at": "2018-01-22 19:52:12",
+        "date_occurred": "2013-11-01 12:00:00",
+        "deleted_at": null,
+        "description": "sfgaesrtgqwrq",
+        "files": [],
+        "id": 11,
+        "mileage": 1231,
+        "provider": "Abnas",
+        "show_in_gallery": null,
+        "slug": "5MXz0guksXdJGDJY",
+        "type": {
+            "id": 1,
+            "name": "Accident",
+            "created_at": "2018-09-26 15:19:44",
+            "updated_at": "2018-09-26 15:19:44",
+            "deleted_at": null
+        },
+        "type_id": 1,
+        "updated_at": "2018-09-26 19:52:12",
+        "vehicle_id": 17
+    },
+    {
+        "cost": "3234.00",
+        "created_at": "2018-09-26 19:52:12",
+        "date_occurred": "2018-01-01 00:00:00",
+        "deleted_at": null,
+        "description": "sfgaesrtgqwrq",
+        "files": [],
+        "id": 11,
+        "mileage": 1231,
+        "provider": "Zsdffa",
+        "show_in_gallery": null,
+        "slug": "5MXz0guksXdJGDJY",
+        "type": {
+            "id": 1,
+            "name": "Accident",
+            "created_at": "2018-09-26 15:19:44",
+            "updated_at": "2018-09-26 15:19:44",
+            "deleted_at": null
+        },
+        "type_id": 1,
+        "updated_at": "2018-09-26 19:52:12",
+        "vehicle_id": 17
+    }
+]

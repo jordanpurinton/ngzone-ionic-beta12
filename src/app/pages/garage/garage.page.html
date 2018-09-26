@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-button (click)="clearFilterNavigate()" style="font-size: 22px" fill="clear">
+              <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title *ngIf="reportType">
+          {{reportType.split(' ').length > 1 ? reportType.split(' ')[0] + '/' + reportType.split(' ')[1] :
+          reportType}}
+          Records ({{filterData.length}})
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content id="content" padding>
+
+  <!-- sorting label -->
+  <div *ngIf="filterData && filterData.length > 1" text-center>
+      <h4 no-margin>
+          <b>Sorting By
+              <span *ngIf="selectedSortType !== 'files'" style="color: #25617f">
+                  {{selectedSortType.split('_')[0].charAt(0).toUpperCase()}}{{selectedSortType.split('_')[0].slice(1)}}
+              </span>
+              <span *ngIf="selectedSortType === 'files'" style="color: #25617f">Images</span>
+          </b>
+      </h4>
+      <ion-button (click)="openFilterPrompt()" size="small" shape="round" fill="outline">Filter<ion-icon name="funnel"
+              slot="end"></ion-icon>
+      </ion-button>
+  </div>
+
+  <!-- descending/ascending filter -->
+  <ion-segment *ngIf="filterData && filterData.length > 1" (ionChange)="segmentChanged($event)" color="primary">
+      <ion-segment-button value="asc" [checked]="sortOrderType === 'asc'">
+          <span *ngIf="sortOrderType !== 'asc'">Ascending</span>
+          <b *ngIf="sortOrderType === 'asc'">Ascending</b>
+      </ion-segment-button>
+      <ion-segment-button value="dsc" [checked]="sortOrderType === 'dsc'">
+          <span *ngIf="sortOrderType !== 'dsc'">Descending</span>
+          <b *ngIf="sortOrderType === 'dsc'">Descending</b>
+      </ion-segment-button>
+  </ion-segment>
+
+  <!-- vehicle report cards -->
+  <vehicle-report-card *ngFor="let r of filterData; trackBy: trackByFn" [reportData]="r" [selectedSortType]="filterData.length > 1 ? selectedSortType : ''"></vehicle-report-card>
+  <br><br><br><br><br>
+</ion-content>

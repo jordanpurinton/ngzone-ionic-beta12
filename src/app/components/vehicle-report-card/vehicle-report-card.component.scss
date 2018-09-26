@@ -1,0 +1,30 @@
+ion-icon {
+    padding-right: 10px;
+    margin-bottom: -3px;
+    zoom: 150%;
+}
+
+ion-card-subtitle {
+    color: rgb(38, 38, 38);
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+ion-card-content {
+    padding: 10px 0 10px 0;
+    font-size: 16px;
+}
+
+div {
+    line-height: 2;
+    font-weight: normal;
+}
+
+#image-label {
+    right: 16px; 
+    bottom: 5px; 
+    position: absolute;
+    ion-icon {
+        padding: 0;
+    }
+}
