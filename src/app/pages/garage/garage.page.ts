@@ -76,65 +76,70 @@ export class GaragePage implements OnInit {
   }
 
   sortData(isDate?) {
-    // descending date
-    if (isDate && this.sortOrderType === 'dsc') {
-      this.filterData = this.reportData.sort((a, b) => +new Date(b.date_occurred) - +new Date(a.date_occurred));
-    }
+    // this.ngZone.run( // put this is to see the list filter properly when a filter type is selected
+      // () => {
 
-    // ascending date
-    else if (isDate && this.sortOrderType === 'asc') {
-      this.filterData = this.reportData.sort((a, b) => +new Date(a.date_occurred) - +new Date(b.date_occurred));
-    }
+        // descending date
+        if (isDate && this.sortOrderType === 'dsc') {
+          this.filterData = this.reportData.sort((a, b) => +new Date(b.date_occurred) - +new Date(a.date_occurred));
+        }
 
-    // descending provider
-    else if (this.sortOrderType === 'dsc' && this.selectedSortType === 'provider') {
-      this.filterData = this.reportData.sort((a, b) => {
-        // null check so filtering doesn't break
-        const providers = [null, null];
-        providers[0] = a.provider ? a.provider : '';
-        providers[1] = b.provider ? b.provider : '';
-        return +(!providers[0]) - +(!providers[1]) || providers[1].toLowerCase().localeCompare(providers[0].toLowerCase());
-      });
-    }
+        // ascending date
+        else if (isDate && this.sortOrderType === 'asc') {
+          this.filterData = this.reportData.sort((a, b) => +new Date(a.date_occurred) - +new Date(b.date_occurred));
+        }
 
-    // ascending provider
-    else if (this.sortOrderType === 'asc' && this.selectedSortType === 'provider') {
-      this.filterData = this.reportData.sort((a, b) => {
-        // null check so filtering doesn't break
-        const providers = [null, null];
-        providers[0] = a.provider ? a.provider : '';
-        providers[1] = b.provider ? b.provider : '';
-        return +(!providers[1]) - +(!providers[0]) || providers[0].toLowerCase().localeCompare(providers[1].toLowerCase());
-      });
-    }
+        // descending provider
+        else if (this.sortOrderType === 'dsc' && this.selectedSortType === 'provider') {
+          this.filterData = this.reportData.sort((a, b) => {
+            // null check so filtering doesn't break
+            const providers = [null, null];
+            providers[0] = a.provider ? a.provider : '';
+            providers[1] = b.provider ? b.provider : '';
+            return +(!providers[0]) - +(!providers[1]) || providers[1].toLowerCase().localeCompare(providers[0].toLowerCase());
+          });
+        }
 
-    // descending mileage/cost
-    else if (this.sortOrderType === 'dsc' && this.selectedSortType !== 'files') {
-      this.filterData = this.reportData.sort((a, b) => {
-        return +(!a[this.selectedSortType]) - +(!b[this.selectedSortType]) || b[this.selectedSortType] - a[this.selectedSortType];
-      });
-    }
+        // ascending provider
+        else if (this.sortOrderType === 'asc' && this.selectedSortType === 'provider') {
+          this.filterData = this.reportData.sort((a, b) => {
+            // null check so filtering doesn't break
+            const providers = [null, null];
+            providers[0] = a.provider ? a.provider : '';
+            providers[1] = b.provider ? b.provider : '';
+            return +(!providers[1]) - +(!providers[0]) || providers[0].toLowerCase().localeCompare(providers[1].toLowerCase());
+          });
+        }
 
-    // ascending mileage/cost
-    else if (this.sortOrderType === 'asc' && this.selectedSortType !== 'files') {
-      this.filterData = this.reportData.sort((a, b) => {
-        return +(!b[this.selectedSortType]) - +(!a[this.selectedSortType]) || a[this.selectedSortType] - b[this.selectedSortType];
-      });
-    }
+        // descending mileage/cost
+        else if (this.sortOrderType === 'dsc' && this.selectedSortType !== 'files') {
+          this.filterData = this.reportData.sort((a, b) => {
+            return +(!a[this.selectedSortType]) - +(!b[this.selectedSortType]) || b[this.selectedSortType] - a[this.selectedSortType];
+          });
+        }
 
-    // descending image count
-    else if (this.sortOrderType === 'dsc' && this.selectedSortType === 'files') {
-      this.filterData = this.reportData.sort((a, b) => {
-        return +(!a['files'].length) - +(!b['files'].length) || b['files'].length - a['files'].length;
-      });
-    }
+        // ascending mileage/cost
+        else if (this.sortOrderType === 'asc' && this.selectedSortType !== 'files') {
+          this.filterData = this.reportData.sort((a, b) => {
+            return +(!b[this.selectedSortType]) - +(!a[this.selectedSortType]) || a[this.selectedSortType] - b[this.selectedSortType];
+          });
+        }
 
-    // ascending image count
-    else {
-      this.filterData = this.reportData.sort((a, b) => {
-        return +(!b['files'].length) - +(!a['files'].length) || a['files'].length - b['files'].length;
-      });
-    }
+        // descending image count
+        else if (this.sortOrderType === 'dsc' && this.selectedSortType === 'files') {
+          this.filterData = this.reportData.sort((a, b) => {
+            return +(!a['files'].length) - +(!b['files'].length) || b['files'].length - a['files'].length;
+          });
+        }
+
+        // ascending image count
+        else {
+          this.filterData = this.reportData.sort((a, b) => {
+            return +(!b['files'].length) - +(!a['files'].length) || a['files'].length - b['files'].length;
+          });
+        }
+      // } // put this is to see the list filter properly when a filter type is selected
+    // );
   }
 
   segmentChanged(order) {
